@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Card from 'react-bootstrap/Card';
 import QuizItem from '../Item/QuizItem';
 import './StartQuiz.css';
 
@@ -14,7 +15,19 @@ const StartQuiz = () => {
 
   return (
     <div className='quiz'>
-        <h1 className='my-5'>Start Quiz</h1>
+        <div className='header-text'>
+            <Card className='quiz-header'>
+            <div className='fs-2 fw-bold'>Lets Start <span className='text-warning fs-3 fw-bold'>Quick Quiz</span></div>
+            <Card.Body>
+                <Card.Title>
+                    If you’re on the search for a fun team-building activity, 
+                    then a virtual quiz is a great way to connect with colleagues 
+                    and get to know one another better.
+                </Card.Title>
+            </Card.Body>
+            </Card>
+        </div>
+
         <div className="quiz-container">
             {
                 quiz.map(item=><QuizItem 

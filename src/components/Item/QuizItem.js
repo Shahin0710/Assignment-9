@@ -6,15 +6,14 @@ import './QuizItem.css';
 
 const QuizItem = ({item}) => {
 
-  console.log(item);
-  
   return (
   <>
     <CardGroup>
     <Card>
         <Card.Img variant="top" className='quiz-item-img'  src={item?.logo} />
         <Card.Body>
-        <Card.Title>{item?.name}</Card.Title>
+        <Card.Title className='fs-4 fw-semibold'>{item?.name}</Card.Title>
+        <p className='fs-4 fw-semibold'>Total Topic: <span className='text-warning fs-4 fw-bold'>{item?.total}</span></p>
         </Card.Body>
         <Card.Footer>
             <Button className='button' variant="warning" onClick={() => handleAddToActivity(item?.id)}>
