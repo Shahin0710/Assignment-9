@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
+import { useNavigate } from 'react-router-dom';
+import { QuizContext } from '../../App';
 import QuizItem from '../QuizItem/QuizItem';
 import './StartQuiz.css';
 
 const StartQuiz = () => {
+    const navigate = useNavigate();
+    const [quizItem, setQuizItem] = useContext(QuizContext);
+
     const [quiz, setQuiz] = useState([]);
-    const [singleQuizItem, setSingleQuizItem] = useState([]);
-    const [quizId, setQuizId] = useState();
 
     const handleStartQuiz = (id) =>{
-        setSingleQuizItem([]);
-        setQuizId(id);
+        setQuizItem(id);
+        navigate(`/single_quiz_id=${id}`);
     }
-
-    useEffect( () =>{
-        fetch(`https://openapi.programming-hero.com/api/quiz/${quizId}`)
-        .then(res=> res.json())
-        .then(data => setSingleQuizItem(data.data))
-    }, [quizId]);
 
     useEffect( () =>{
         fetch('https://openapi.programming-hero.com/api/quiz')
@@ -42,11 +39,11 @@ const StartQuiz = () => {
 
         <div className="quiz-container">
             {
-                quiz.map(item=><QuizItem 
-                    key={item.id}
-                    item={item}
-                    handleStartQuiz={handleStartQuiz}
-                    />)
+            quiz.map(item=><QuizItem 
+                key={item.id}
+                item={item}
+                handleStartQuiz={handleStartQuiz}
+                />)
             }
         </div>
     </div>

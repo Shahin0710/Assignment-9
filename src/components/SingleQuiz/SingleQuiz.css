@@ -1,3 +1,8 @@
 .single-quiz {
   margin-top: 70px;
+  text-align: center;
+}
+
+.quiz-name {
+  color: #ffc104;
 }
