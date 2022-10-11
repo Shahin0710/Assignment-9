@@ -24,7 +24,7 @@ const SingleQuiz = () => {
             Quiz of <span className='quiz-name'>{quizData?.name}</span>
           </h2>
 
-          <div>
+          <div className='single-question'>
             {
             quizData?.questions?.map(item=><QuizQuestion
                 key={item.id}
