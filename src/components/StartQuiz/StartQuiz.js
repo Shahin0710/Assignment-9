@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
-import QuizItem from '../Item/QuizItem';
+import QuizItem from '../QuizItem/QuizItem';
 import './StartQuiz.css';
 
 const StartQuiz = () => {
