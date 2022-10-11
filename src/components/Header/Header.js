@@ -17,7 +17,7 @@ function Header() {
           <Nav className="justify-content-end">
             <Nav.Link>
               <NavLink className='text-white link-path' to='/'>
-                Topic
+                Home
               </NavLink>
             </Nav.Link>
             <Nav.Link>
