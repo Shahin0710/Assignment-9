@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import './Blog.css';
 
@@ -9,6 +10,7 @@ const Blog = () => {
         <h1>
             Blog
         </h1>
+        <Footer />
     </div>
   )
 }

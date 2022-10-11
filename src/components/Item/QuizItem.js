@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './QuizItem.css';
 
-const QuizItem = ({item}) => {
+const QuizItem = ({item, handleStartQuiz}) => {
 
   return (
   <>
@@ -16,7 +16,7 @@ const QuizItem = ({item}) => {
         <p className='fs-4 fw-semibold'>Total Topic: <span className='text-warning fs-4 fw-bold'>{item?.total}</span></p>
         </Card.Body>
         <Card.Footer>
-            <Button className='button' variant="warning" onClick={() => handleAddToActivity(item?.id)}>
+            <Button className='button' variant="warning" onClick={() => handleStartQuiz(item?.id)}>
                 Start Quiz
             </Button>
         </Card.Footer>

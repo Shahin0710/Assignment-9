@@ -4,8 +4,20 @@ import QuizItem from '../Item/QuizItem';
 import './StartQuiz.css';
 
 const StartQuiz = () => {
-
     const [quiz, setQuiz] = useState([]);
+    const [singleQuizItem, setSingleQuizItem] = useState([]);
+    const [quizId, setQuizId] = useState();
+
+    const handleStartQuiz = (id) =>{
+        setSingleQuizItem([]);
+        setQuizId(id);
+    }
+
+    useEffect( () =>{
+        fetch(`https://openapi.programming-hero.com/api/quiz/${quizId}`)
+        .then(res=> res.json())
+        .then(data => setSingleQuizItem(data.data))
+    }, [quizId]);
 
     useEffect( () =>{
         fetch('https://openapi.programming-hero.com/api/quiz')
@@ -33,6 +45,7 @@ const StartQuiz = () => {
                 quiz.map(item=><QuizItem 
                     key={item.id}
                     item={item}
+                    handleStartQuiz={handleStartQuiz}
                     />)
             }
         </div>
