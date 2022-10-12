@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
@@ -12,23 +12,23 @@ import './QuizQuestion.css';
 
 const QuizQuestion = ({item}) => {
   const [checkBoxChecked, setCheckBoxChecked] = useState('');
-  const [notifyValue, setNotifyValue] = useState('');
 
-  const notify = () => toast(checkBoxChecked === notifyValue ? "Sorry! Your Answer Is Incorrect" : "Wow Your Answer Is Correct!");
+  const notifyCorrect = () => toast("Wow Your Answer Is Correct!");
+  const notifyInCorrect = () => toast("Sorry! Your Answer Is Incorrect");
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const onChangeAttribute = (type, item) => {
-    notify();
+  const onChangeAttribute = (type, correctAnswer) => {
     setCheckBoxChecked(type);
-    setNotifyValue(item);
+    if (type === correctAnswer) {
+       notifyCorrect();
+    } else{
+       notifyInCorrect();
+    };
   };
-
-    useEffect( () =>{
-  }, [notifyValue]);
 
   return (
   <>
@@ -62,6 +62,7 @@ const QuizQuestion = ({item}) => {
     </Card>
     </CardGroup>  
     <ToastContainer />
+    
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Correct Answer</Modal.Title>
